@@ -1,0 +1,53 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "ShotPlan",
+  "type": "object",
+  "properties": {
+    "shots": {
+      "type": "array",
+      "minItems": 4,
+      "maxItems": 15,
+      "items": {
+        "type": "object",
+        "properties": {
+          "scene_id": {
+            "type": "string",
+            "description": "Scene this shot belongs to (e.g., 's1')"
+          },
+          "narration": {
+            "type": "string",
+            "description": "VO/dialog covered by this shot (1-2 kalimat). Empty string if silent shot."
+          },
+          "onscreen_text": {
+            "type": "string",
+            "description": "Caption overlay (mute layer). Empty string if none."
+          },
+          "shot_type": {
+            "type": "string",
+            "enum": ["wide", "medium", "close", "ecu", "ots", "pov"]
+          },
+          "camera_move": {
+            "type": "string",
+            "enum": ["static", "push_in", "pull_out", "pan", "handheld", "whip"]
+          },
+          "mood": {
+            "type": "string",
+            "enum": ["mencekam", "sunyi-tegang", "firasat", "kejutan", "intim"]
+          },
+          "duration_sec": {
+            "type": "number",
+            "minimum": 2,
+            "maximum": 8,
+            "description": "Shot duration. From intent, not VO length."
+          },
+          "intent": {
+            "type": "string",
+            "description": "Why this shot exists (1 sentence). Director reasoning."
+          }
+        },
+        "required": ["scene_id", "narration", "shot_type", "camera_move", "mood", "duration_sec", "intent"]
+      }
+    }
+  },
+  "required": ["shots"]
+}

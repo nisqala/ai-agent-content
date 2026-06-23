@@ -1,0 +1,95 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "StoryOutline",
+  "type": "object",
+  "properties": {
+    "premise": {
+      "type": "string",
+      "description": "The premise this story is built on (1-2 sentences)"
+    },
+    "timing_mode": {
+      "type": "string",
+      "enum": ["intent_first", "audio_first", "scene_first", "music_first"],
+      "description": "intent_first = mute-first; durations from beat intent. audio_first = from VO timestamps. scene_first = from action. music_first = from beat."
+    },
+    "aspect_ratio": {
+      "type": "string",
+      "enum": ["9:16", "1:1", "16:9"]
+    },
+    "hook": {
+      "type": "object",
+      "properties": {
+        "visual_first_frame": {
+          "type": "string",
+          "description": "Description of the very first frame (mute viewers see this)"
+        },
+        "onscreen_text": {
+          "type": "string",
+          "description": "Caption text overlay, 4-7 words, present tense, high-contrast. PRIMARY hook for mute viewers."
+        },
+        "vo_line": {
+          "type": "string",
+          "description": "VO line (supplementary, for unmuted viewers). Optional."
+        },
+        "duration_sec": {
+          "type": "number",
+          "minimum": 1,
+          "maximum": 5,
+          "description": "Hook duration in seconds. 3.0 typical for short-form."
+        }
+      },
+      "required": ["visual_first_frame", "onscreen_text", "duration_sec"]
+    },
+    "beats": {
+      "type": "array",
+      "minItems": 2,
+      "maxItems": 6,
+      "items": {
+        "type": "object",
+        "properties": {
+          "beat_id": {
+            "type": "string",
+            "description": "Unique ID (e.g., 'b1', 'b2')"
+          },
+          "narasi_vo": {
+            "type": "string",
+            "description": "VO narration for this beat (audio layer)"
+          },
+          "visual_concept": {
+            "type": "string",
+            "description": "Visual concept driving this beat (mute layer, primary)"
+          },
+          "onscreen_text_caption": {
+            "type": "string",
+            "description": "Sticky caption for mute readers. Optional."
+          },
+          "duration_sec_target": {
+            "type": "number",
+            "minimum": 2,
+            "maximum": 15,
+            "description": "Target duration in seconds, from BEAT INTENT not VO length"
+          }
+        },
+        "required": ["beat_id", "visual_concept", "duration_sec_target"]
+      }
+    },
+    "payoff": {
+      "type": "string",
+      "description": "The reveal/resolution/scare moment"
+    },
+    "emotional_arc": {
+      "type": "string",
+      "description": "e.g., 'tenang → gelisah → teror → hening'"
+    },
+    "loop": {
+      "type": "boolean",
+      "description": "Does the video loop back to opening?"
+    },
+    "curiosity_gaps": {
+      "type": "array",
+      "items": { "type": "string" },
+      "description": "List of unanswered questions seeded throughout video"
+    }
+  },
+  "required": ["premise", "timing_mode", "aspect_ratio", "hook", "beats", "payoff", "emotional_arc"]
+}
