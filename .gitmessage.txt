@@ -1,0 +1,18 @@
+# <prefix>: <ringkas, present tense, ≤60 char>
+#
+# ── PREFIX (pilih satu) ──────────────────────────────
+#   add:   hal baru yang works (fitur, file, langkah)
+#   fix:   benerin bug/error
+#   lock:  kunci keputusan/versi (prompt, style bible, schema)
+#   docs:  ubah dokumen/catatan
+#   wip:   belum kelar, save sementara
+#
+# ── CONTOH ───────────────────────────────────────────
+#   add: ollama /api/chat connect (L2)
+#   fix: json_decode double-parse message.content
+#   lock: pass0 prompt think-test winner
+#   docs: update SESSIONS posisi ke 2B
+#
+# ── (opsional) body di bawah: jelasin KENAPA, bukan APA ──
+#
+# Tips: hapus baris berkomentar (#) gak perlu — gak ke-save.

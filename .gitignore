@@ -1,6 +1,21 @@
 *.log
+*.pem
+.mp4
+*.mov
+*.mkv
+*.wav
+*.mp3
+*.png
+*.jpg
+*.jpeg
+*.webp
+/scratch/media/
+/storage/app/media/
+/storage/app/public/
 .DS_Store
 .env
+.evv.*
+!.env.example
 .env.backup
 .env.production
 .phpactor.json
@@ -17,6 +32,10 @@
 /public/hot
 /public/storage
 /storage/*.key
+/storage/framework/cache/*
+/storage/framework/sessions/*
+/storage/logs/*
+/bootstrap/cache/*
 /storage/pail
 /vendor
 Homestead.json
@@ -24,9 +43,25 @@ Homestead.yaml
 Thumbs.db
 /vendor
 /node_modules
-.env
-/storage/*.key
-*.mp4
-*.png
-*.gguf
+/.npm-global
 /scratch/media
+auth.json
+
+# --- Model AI / weights (gede banget) ---
+*.gguf
+*.safetensors
+*.ckpt
+*.bin
+*.pt
+
+# --- OS / editor ---
+.DS_Store
+Thumbs.db
+.idea/
+.vscode/*
+!.vscode/extensions.json
+
+# --- Catatan ---
+# Yang TETAP di-commit: *.md, *.php, *.json (schema), *.blade.php,
+# composer.json, package.json, .gitignore, .gitmessage.txt
+# Kalau ragu file gede ke-track gak: `git status` sebelum `git add`.
