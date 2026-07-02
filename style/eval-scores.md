@@ -11,6 +11,6 @@ One row per run. Rubric definitions live in eval-rubric.md.
 | 2026-06-24 | out_true | 2 | FAIL | - | - | - | - | - | - | product-FAIL | mute-fail | enums broken, temp 0.2 |
 | 2026-06-24 | out_true | 3 | PASS | 4 | 4 | 4 | 4 | 4 | 20 | product-PASS | arc | think:TRUE, sharpened prompt, corrected enums, num_ctx 16384 |
 | 2026-06-24 | out_false | 4 | FAIL | - | - | - | - | - | - | product-FAIL | mute-fail | same config as #3 but think off → still failed |
-| 2026-06-25 | out_close_v3_5 | qwen3.5:9b | true | 0.2 | 24576 | v3 prompt | stop | PASS | 16/25 | product-PASS | Stage1 clean; hook restates premise (#4 confirmed); 11.8min |
-| 2026-06-25 | out_close_v3_6 | qwen3.5:9b | true | 0.2 | 24576 | v3 prompt | stop | PASS | 18/25 | product-PASS | strongest run; reveal beat "nenek tersenyum padahal sudah tiada lama"; 13.7min |
-| 2026-06-25 | out_close_v3_7 | qwen3.5:9b | true | 0.2 | 24576 | v3 prompt | stop | PASS | 16/25 | product-PASS | folklore_refs:Kuyup suspect; near-rumination (26k thinking) but escaped; 22.2min |
+| 2026-06-25 | out_close_v3 | 5 | PASS | 2 | 4 | 4 | 3 | 3 | 16 | product-PASS | hook | hook restates premise (#4 confirmed); 11.8min; v3 prompt |
+| 2026-06-25 | out_close_v3 | 6 | PASS | 3 | 4 | 4 | 3 | 4 | 18 | product-PASS | hook | strongest run; "nenek tersenyum padahal sudah tiada lama" reveal; 13.7min; v3 prompt |
+| 2026-06-25 | out_close_v3 | 7 | PASS | 3 | 3 | 4 | 2 | 4 | 16 | product-PASS | style | folklore_refs:Kuyup suspect; near-rumination (26k thinking) escaped; 22.2min; v3 prompt |
