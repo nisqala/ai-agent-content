@@ -37,11 +37,10 @@
 /storage/logs/*
 /bootstrap/cache/*
 /storage/pail
-/vendor
 Homestead.json
 Homestead.yaml
 Thumbs.db
-/vendor
+claude documents/
 /node_modules
 /.npm-global
 /scratch/media
@@ -77,3 +76,4 @@ style-bible-horror.md
 # Yang TETAP di-commit: *.md, *.php, *.json (schema), *.blade.php,
 # composer.json, package.json, .gitignore, .gitmessage.txt
 # Kalau ragu file gede ke-track gak: `git status` sebelum `git add`.
+vendor
