@@ -18,31 +18,32 @@ class DirectTest extends Command
         $this->error('halo');
 
         $body = [
-            "model" => "qwen3:4b",
+            "model" => "qwen3.5:9b",
             "messages"=>[[
                 "role"=>"user",
-                "content"=>"Sebutkan 3 buah. /no_think"
+                "content"=>"Reply only with a JSON object that has a single key ok set to true."
             ]],
             "stream"=>false,
             "think"=>false,
             "format"=>[
                 "type"=>"object",
                 "properties"=>[
-                    "buah"=>[
-                        "type"=>"array",
-                        "items"=>["type"=>"string"]
+                    "ok"=>[
+                        "type"=>"boolean"
                     ]
                 ],
-                "required"=>["buah"]
-            ]
+                "required"=>["ok"]
+            ],
+            "stream"=>false,
+            "think"=>false
         ];
 
         $response = Http::timeout(120)->post('http://127.0.0.1:11434/api/chat',$body);
         $content = $response->json('message.content');
 
-        $clean = trim(Str::after($content,'</think>'));
+        $clean = trim(Str::after($content,'</think>'));  # only if think true or using model 4b where think cant be disabled
         print_r(json_decode($clean, true));
-
+        print_r($content);
         return Command::SUCCESS;
     }
 }

@@ -14,7 +14,7 @@
 /storage/app/public/
 .DS_Store
 .env
-.evv.*
+.env.*
 !.env.example
 .env.backup
 .env.production
@@ -60,6 +60,18 @@ Thumbs.db
 .idea/
 .vscode/*
 !.vscode/extensions.json
+
+
+.env
+DAFTAR-api-key.md
+0*-*.md
+*.html
+HABITS.md
+KOSAKATA.md
+LEARNING_CAPTURE.md
+MODEL-tool-atlas-*.md
+STYLE-PRESETS.md
+style-bible-horror.md
 
 # --- Catatan ---
 # Yang TETAP di-commit: *.md, *.php, *.json (schema), *.blade.php,
