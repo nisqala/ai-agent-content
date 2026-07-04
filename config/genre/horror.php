@@ -28,7 +28,17 @@ return [
     ],
     'shot_duration' => [
         'min' => 3, 'max' => 8
-    ]
+    ],
+    'mood_keywords' => [  // Tier 3 — lowercase tokens for fuzzy / substring / keyword match
+        'quiet_wrongness'      => ['quiet','wrong','off','subtle','uneasy','eerie','unsettling','melancholy','wistful','strange','odd','faint','disquiet'],
+        'built_dread'          => ['dread','oppressive','dreadful','ominous','foreboding','heavy','looming','building','suffocating','menacing','gloom'],
+        'paranoia_rl_bleed'    => ['paranoia','paranoid','watched','followed','anxious','creeping','hunted','pursued','exposed','presence','unseen','vulnerable'],
+        'tense_silence'        => ['tense','silence','silent','still','suspense','suspenseful','breathless','anticipation','hush','motionless','waiting'],
+        'investigation'        => ['investigation','curious','suspicious','searching','methodical','probing','mystery','clue','uncovering','examining','procedural', 'investigative'],
+        'escalation_beat'      => ['escalation','escalating','rising','mounting','intensifying','worsening','climbing','spiraling','alarming','frantic','urgent','accelerating', 'intense'],
+        'earned_payoff_terror' => ['terror','terrifying','horrifying','horror','shocking','frightening','petrifying','nightmarish','monstrous','reveal','climax','peak'],
+        'aftermath_hollow'     => ['aftermath','hollow','empty','desolate','bleak','mournful','grief','numb','lonely','somber','resigned','void','forlorn'],
+    ],
 ]
 
 ?>
