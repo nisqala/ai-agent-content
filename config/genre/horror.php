@@ -1,6 +1,8 @@
 <?php
 
 return [
+    'max_shot_sec' => 8,      // divisor in: ceil(est_duration / this)
+    'min_shot_sec' => 2,    // floor for post-split shot duration in #4
     'mood_to_arc' => [
         'quiet_wrongness' => 'wrongness',
         'built_dread'=> 'dread',
@@ -17,6 +19,7 @@ return [
     'arc_stages' =>[
         'wrongness', 'dread', 'escalation', 'payoff', 'aftermath'
     ],
+    'payoff_stages' => ['payoff'],
     'shot_type_whitelist' =>[
         'extreme_wide', 'wide', 'medium', 'medium_close', 'close_up', 'extreme_close', 'ots', 'pov', 'two_shot', 'insert_cutaway'
     ],
@@ -39,6 +42,4 @@ return [
         'earned_payoff_terror' => ['terror','terrifying','horrifying','horror','shocking','frightening','petrifying','nightmarish','monstrous','reveal','climax','peak'],
         'aftermath_hollow'     => ['aftermath','hollow','empty','desolate','bleak','mournful','grief','numb','lonely','somber','resigned','void','forlorn'],
     ],
-]
-
-?>
+];

@@ -13,23 +13,19 @@
 namespace App\Services\Director;
 
 class MoodNormalizer{
-    public function normalizeMood(array $beats): array{
-
-        $moods_enum = config('genre.horror.mood_enum');
-        $mood_keywords = config('genre.horror.mood_keywords');// 8 canonical mood enums
-
+    public function normalize(array $beats, array $moodEnum, array $moodKeywords): array{
         foreach ($beats as &$b) {
             $b['mood_raw'] = $b['mood'];
             $mood = strtolower($b['mood']);
             $b['need_review'] = false;
+
             // Tier 1: Exact Match
-            if(in_array($mood, $moods_enum, true)){
+            if(in_array($mood, $moodEnum, true)){
                 $b['mood'] = $mood;
-                continue;
-            }else if(array_any($mood_keywords, fn ($values)=>in_array($mood, $values, true))){ // Tier 3: Synonyms and tier 2: Aliases (same thing)- alias = synonyms
-                $mood = array_find_key($mood_keywords, fn($values) => in_array($mood, $values, true));
+            }else if(array_any($moodKeywords, fn($values)=>in_array($mood, $values, true))){ // Tier 3: Synonyms and tier 2: Aliases (same thing)- alias = synonyms
+                $mood = array_find_key($moodKeywords, fn ($values)=>in_array($mood, $values, true));
             }else{
-                $candidates = array_merge($moods_enum, array_merge(...array_values($mood_keywords)));
+                $candidates = array_merge($moodEnum, array_merge(...array_values($moodKeywords)));
                 $distance = null;
                 $possible_mood = null;
 
@@ -45,8 +41,8 @@ class MoodNormalizer{
 
                 // check typo AFTER finding closest mood
                 if ($distance <= 2) {
-                    if(!in_array($possible_mood, $moods_enum, true)){
-                        $possible_mood = array_find_key($mood_keywords, fn($values) => in_array($possible_mood, $values, true));
+                    if(!in_array($possible_mood, $moodEnum, true)){
+                        $possible_mood = array_find_key($moodKeywords, fn($values) => in_array($possible_mood, $values, true));
                         $mood=$possible_mood;
                     }
                 } else {
@@ -55,7 +51,7 @@ class MoodNormalizer{
                 }
             }
 
-            $b['mood'] = $mood;
+            $b['mood'] = strtolower($mood);
         }
 
         unset($b);
