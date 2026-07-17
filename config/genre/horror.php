@@ -23,12 +23,6 @@ return [
     'shot_type_whitelist' =>[
         'extreme_wide', 'wide', 'medium', 'medium_close', 'close_up', 'extreme_close', 'ots', 'pov', 'two_shot', 'insert_cutaway'
     ],
-    'camera_move_whitelist' => [
-        'static_locked', 'slow_dolly_push_in', 'slow_dolly_pull_out','pan_left', 'pan_right', 'tilt_up', 'tilt_down', 'tracking', 'following', 'leading', 'crane_jib', 'aerial_drone', 'handheld', 'pov_walking', 'whip_pan', 'dolly_zoom', 'arc_orbit'
-    ],
-    'payoff_gated_moves' => [
-        'whip_pan', 'dolly_zoom'
-    ],
     'shot_duration' => [
         'min' => 3, 'max' => 8
     ],
@@ -42,4 +36,38 @@ return [
         'earned_payoff_terror' => ['terror','terrifying','horrifying','horror','shocking','frightening','petrifying','nightmarish','monstrous','reveal','climax','peak'],
         'aftermath_hollow'     => ['aftermath','hollow','empty','desolate','bleak','mournful','grief','numb','lonely','somber','resigned','void','forlorn'],
     ],
+    'shot_type_whitelist' => [
+        'extreme_wide', 'wide', 'medium', 'medium_close_up',
+        'close_up', 'extreme_close_up', 'over_the_shoulder',
+        'pov', 'insert',
+    ],
+    'camera_move_whitelist' => [
+        'static', 'slow_push_in', 'slow_pull_out',
+        'pan_left', 'pan_right', 'tracking', 'leading',
+        'whip_pan', 'handheld',
+    ],
+    'payoff_gated_moves' => [
+        'whip_pan'
+    ],
+    'payoff_soft_moves' => [
+        'handheld'
+    ],
+
+    'craft_rules' => <<<'RULES'
+    - Every beat's scene state includes an arc_stage. Match your shot choices to it:
+    wrongness  -> static medium or wide; deep space; the anomaly sits SMALL in the
+                    frame. HOLD - never cut to the anomaly or punch in.
+    dread      -> wide or medium with slow_push_in; empty negative space reads as threat.
+    escalation -> REPEAT a framing used earlier in this story, but tighter
+                    (e.g. medium -> medium_close_up); the familiar, now worse.
+    payoff     -> break the established pattern: extreme_close_up OR a sudden wide.
+                    This is the ONLY stage where whip_pan or handheld is allowed.
+    aftermath  -> extreme_wide with slow_pull_out; subject small, long hold.
+    - Reserve whip_pan and handheld exclusively for payoff beats.
+    - pov and over_the_shoulder are for paranoia moments - put the viewer inside the search.
+    - insert is for investigation details (clues, objects) only.
+    - Vary shot size across consecutive shots; the sequence accelerates, individual
+    shots hold.
+    - intent: one short sentence - what this shot makes the viewer feel or notice.
+    RULES,
 ];

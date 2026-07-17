@@ -36,7 +36,7 @@
 namespace App\Services\Director;
 class SceneStateComputer
 {
-    public function computeSceneState(array $beats, array $moodToArc, array $payoffStages, int $maxShotSec, int $maxShotsPerBeat): array{
+    public function compute(array $beats, array $moodToArc, array $payoffStages, int $maxShotSec, int $maxShotsPerBeat): array{
         $scene_states = array();
         $n=1;
         $cum_duration = 0;
@@ -49,8 +49,9 @@ class SceneStateComputer
             $scene_state['beat_index'] = $n;
             $scene_state['prior_mood'] = $prior_mood;
             $scene_state['cumulative_duration_sec_before'] = $cum_duration;
+            $scene_state['need_review'] = $b['need_review'] ?? false;
 
-            if($b['need_review'] ?? false){
+            if($scene_state['need_review']){
                 $scene_state['arc_stage'] = 'needs_review';
                 $scene_state['is_payoff_beat'] =false;
             }else{

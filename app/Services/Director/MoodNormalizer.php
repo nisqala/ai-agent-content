@@ -47,7 +47,8 @@ class MoodNormalizer{
                     }
                 } else {
                     $b['need_review'] = true;
-                    $mood = $b['mood_raw'];
+                    $b['mood'] = $b['mood_raw'];
+                    continue;
                 }
             }
 
